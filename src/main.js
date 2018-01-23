@@ -4,6 +4,11 @@ import router from './router'
 import store from './store'
 import api from './api'
 import VueProgressBar from 'vue-progressbar'
+import 'element-ui/lib/theme-chalk/index.css'
+import { Menu, MenuItem } from 'element-ui'
+
+Vue.use(Menu)
+Vue.use(MenuItem)
 
 Vue.config.productionTip = false
 
@@ -19,7 +24,7 @@ Vue.mixin({
 })
 
 const options = {
-  color: 'rgb(143, 255, 199)',
+  color: '#20a0ff',
   failedColor: '#874b4b',
   thickness: '5px',
   transition: {
