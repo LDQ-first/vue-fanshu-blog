@@ -33,6 +33,13 @@ export default {
 .container {
   padding: 0 10%;
   background: $containerBg;
+  min-width: 320px;
+  @media (max-width: 500px){
+    padding: 0 20px;
+  }
+   @media (max-width: 414px){
+    padding: 0;
+  }
   .right {
     float: right;
   }
