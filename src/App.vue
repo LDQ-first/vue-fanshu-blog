@@ -60,4 +60,8 @@ body {
   margin: 0;
   min-width: 320px;
 }
+
+.el-form-item__label {
+  width: 100%;
+}
 </style>

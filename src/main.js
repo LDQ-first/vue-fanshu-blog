@@ -5,7 +5,8 @@ import store from './store'
 import api from './api'
 import VueProgressBar from 'vue-progressbar'
 import 'element-ui/lib/theme-chalk/index.css'
-import { Menu, MenuItem, Form, FormItem, Input, Button } from 'element-ui'
+import { Menu, MenuItem, Form, FormItem, Input,
+  Button, Message } from 'element-ui'
 
 Vue.use(Menu)
 Vue.use(MenuItem)
@@ -13,6 +14,9 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Button)
+// Vue.use(Message)
+
+Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 

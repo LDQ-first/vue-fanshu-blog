@@ -2,7 +2,7 @@
   <div class="container">
     <h1>注册</h1>
     <div class="from-panel">
-      <el-form :label-position="top" ref="form" label-width="80px" :model="user" :rules="rules">
+      <el-form label-position="top" ref="form" label-width="80%" :model="user" :rules="rules">
         <el-form-item label="用户名" prop="name">
           <el-input v-model="user.name"></el-input>
         </el-form-item>
@@ -27,7 +27,7 @@
 export default {
   name: 'SignUp',
   data () {
-     let validatePass = (rule, value, callback) => {
+    let validatePass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
       } else {
@@ -59,15 +59,55 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' },
           { min: 3, max: 7, message: '长度在 3 到 7 个字符之间', trigger: 'blur' }
         ],
+        email: [
+          { required: true, message: '请填入邮箱', trigger: 'blur' },
+          { type: 'email', message: '必须是合法的邮箱格式', trigger: 'blur' }
+        ],
+        pwd: [
+          { required: true, message: '必须填', trigger: 'blur' },
+          { validator: validatePass, trigger: 'blur' }
+        ],
+        cpwd: [
+          { required: true, message: '必须填', trigger: 'blur' },
+          { validator: validatePass2, trigger: 'blur' }
+        ]
       }
     }
   },
   methods: {
-    submitForm () {}
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          console.log('error submit!!')
+          this.$message.error('错了，你填写的信息有误，请按照提示进行修改。')
+          return false
+        }
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  .container {
+    padding: 60px 10%;
+    background: #fafafa;
+    min-height: calc(100vh - 180px);
+    h1 {
+      text-align: center;
+      font-weight: 100;
+      font-size: 40px;
+      margin-bottom: 35px;
+    }
+    .from-panel {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .oprator {
+      margin-top: 30px;
+      text-align: center;
+    }
+  }
 </style>
