@@ -6,7 +6,7 @@ import api from './api'
 import VueProgressBar from 'vue-progressbar'
 import 'element-ui/lib/theme-chalk/index.css'
 import { Menu, MenuItem, Form, FormItem, Input,
-  Button, Message } from 'element-ui'
+  Button, Message, Submenu } from 'element-ui'
 
 Vue.use(Menu)
 Vue.use(MenuItem)
@@ -14,6 +14,7 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Button)
+Vue.use(Submenu)
 // Vue.use(Message)
 
 Vue.prototype.$message = Message
@@ -46,6 +47,13 @@ const options = {
 }
 
 Vue.use(VueProgressBar, options)
+
+const user = api.SDK.User.current()
+console.log(user)
+
+if (user) {
+  store.commit('setUser', user)
+}
 
 /* eslint-disable no-new */
 new Vue({

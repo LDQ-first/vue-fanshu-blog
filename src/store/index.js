@@ -11,6 +11,14 @@ const store = new Vuex.Store({
     setUser (state, user) {
       state.user = user
     }
+  },
+  actions: {
+    exit ({ commit }) {
+      commit('setUser', null)
+    },
+    login ({ commit }, user) {
+      commit('setUser', user)
+    }
   }
 })
 
