@@ -78,7 +78,20 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          console.log(`${this.user.name} submit!`)
+          let user = new this.$api.SDK.User()
+          user.setUsername(this.user.name)
+          user.setPassword(this.user.pwd)
+          user.setEmail(this.user.email)
+
+          user.signUp().then((loginUser) => {
+            this.$store.commit('setUser', loginUser)
+            this.$router.go(-1)
+            this.$message.success('注册成功!')
+          }).catch(error => {
+            console.error(error)
+            this.$message.error(error.message)
+          })
         } else {
           console.log('error submit!!')
           this.$message.error('错了，你填写的信息有误，请按照提示进行修改。')

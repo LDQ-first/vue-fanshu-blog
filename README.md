@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+
+[用户名和密码注册](https://leancloud.cn/docs/leanstorage_guide-js.html#hash-452155059)
+
+
 ## Build Setup
 
 ``` bash
